@@ -668,6 +668,7 @@ def build_train_transforms(image_size):
     return [
         Resize((image_size, image_size)),
         HorizontalFlip(prob=0.5),
+        
         OneOf(
             [
                 NoTransform(),
@@ -704,7 +705,7 @@ def build_train_transforms(image_size):
                 RandomErasing(scale=(0.02, 0.06), ratio=(0.5, 2.0), value="random", prob=1.0),
             ],
             prob=0.25,
-        ),
+        ), 
     ]
 
 

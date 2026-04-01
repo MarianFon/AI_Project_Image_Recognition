@@ -6,6 +6,7 @@ from dataset import ObjDetectionDataset
 from torch.utils.data import DataLoader
 from model import build_model
 from trainer import train_model
+from augmentations import build_train_transforms, build_val_transforms
 
 
 def collate(batch):
@@ -22,8 +23,8 @@ def main():
     val_df = pd.read_csv(os.path.join(args.csv_dir, 'val_df.csv'))
 
     # 2. Prepare datasets
-    train_dataset = ObjDetectionDataset(train_df)
-    val_dataset = ObjDetectionDataset(val_df)
+    train_dataset = ObjDetectionDataset(train_df, transform=build_train_transforms(args.image_size))
+    val_dataset = ObjDetectionDataset(val_df, transform=build_val_transforms(args.image_size))
 
     # 3. Create data loaders
     train_loader = DataLoader(train_dataset, batch_size=args.batch_size, shuffle=True, collate_fn=collate, 
