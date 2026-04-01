@@ -14,6 +14,7 @@ def resize_box_xyxy(box, old_w, old_h, new_w, new_h):
 
     return x1, y1, x2, y2
 
+"""
 def show_batch(images, targets):
     for i in range(len(images)):
         image = images[i].detach().cpu().permute(1, 2, 0).numpy()
@@ -49,3 +50,4 @@ def show_batch(images, targets):
         ax.set_title(f"Sample {i + 1} in batch")
         ax.axis("off")
         plt.show()
+"""
