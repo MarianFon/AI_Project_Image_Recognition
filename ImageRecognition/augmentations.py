@@ -697,16 +697,16 @@ def build_train_transforms(image_size):
             ],
             prob=0.60,
         ),
-        ToTensor(),
-        OneOf(
-            [
-                NoTransform(),
-                GaussianNoise(std_range=(0.01, 0.03), prob=1.0),
-                RandomErasing(scale=(0.02, 0.06), ratio=(0.5, 2.0), value="random", prob=1.0),
+        # ToTensor(),
+        # OneOf(
+            # [
+               # NoTransform(),
+                # GaussianNoise(std_range=(0.01, 0.03), prob=1.0),
+                # RandomErasing(scale=(0.02, 0.06), ratio=(0.5, 2.0), value="random", prob=1.0),
             ],
-            prob=0.25,
-        ), 
-    ]
+           # prob=0.25,
+        #), 
+   # ]
 
 
 def build_val_transforms(image_size):
